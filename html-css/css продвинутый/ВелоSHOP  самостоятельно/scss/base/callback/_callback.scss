@@ -1,0 +1,44 @@
+.callback {
+	display: flex;
+	flex-direction: row;
+	height: 255px;
+
+	&__left {
+		width: 50%;
+		background: url(../img/callback-bike.jpeg) no-repeat 50% / cover;
+	}
+	&__right {
+		width: 50%;
+		background: url(../img/callback-bg.jpeg) no-repeat 50% / cover;
+		p {
+			margin-top: 70px;
+			margin-left: 50px;
+			width: 425px;
+			height: 45px;
+			color: rgb(255, 255, 255);
+			font-size: 20px;
+			font-weight: 400;
+			line-height: 23px;
+		}
+		form {
+			input {
+				margin-top: 25px;
+				margin-left: 50px;
+				width: 288px;
+				height: 40px;
+				box-sizing: border-box;
+				border: 1px solid rgb(227, 227, 227);
+				border-radius: 12px;
+				background: rgb(255, 255, 255);
+				padding-left: 16px;
+			}
+		}
+	}
+	&__button {
+		margin-left: 20px;
+		width: 150px;
+		height: 40px;
+		font-size: 16px;
+		line-height: 18px;
+	}
+}

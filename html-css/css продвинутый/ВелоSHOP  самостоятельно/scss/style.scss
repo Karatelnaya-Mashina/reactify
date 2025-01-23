@@ -1,0 +1,53 @@
+:root {
+	--black-color: rgb(38, 50, 56);
+	--base-color: rgb(185, 239, 0);
+	--base-color-hover: rgb(217, 255, 86);
+	--base-color-active: rgb(163, 210, 0);
+	--border-color: rgb(227, 227, 227);
+	--placeholder-color: rgb(186, 239, 0);
+}
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+	font-family: 'Arial', sans-serif;
+}
+body {
+	margin: 0;
+	color: var(--black-color);
+}
+
+.container {
+	max-width: 1170px;
+	margin: 0 auto;
+}
+footer {
+	margin-top: 80px;
+	height: 60px;
+	// width: 100%;
+	background: var(--border-color);
+	text-align: center;
+	line-height: 58px;
+	font-size: 24px;
+	a {
+		color: rgba(38, 50, 56, 0.5);
+		text-decoration: none;
+		font-family: Inter;
+	}
+}
+@media (max-width: 325px) {
+	.container {
+		max-width: 740px;
+		flex-direction: column;
+	}
+}
+
+@import 'libs/buttons.scss';
+@import 'base/header/header.scss';
+@import 'base/promo/promo.scss';
+@import 'base/callback/callback.scss';
+@import 'base/catalog/catalog.scss';
+
+@import 'base/header/header-media.scss';
+@import 'base/promo/promo-media.scss';
+@import 'base/callback/callback-media.scss';
+@import 'base/catalog/catalog-media.scss';

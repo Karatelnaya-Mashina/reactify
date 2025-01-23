@@ -1,0 +1,12 @@
+@media (max-width: 325px) {
+	.header {
+		&__logo {
+			width: 100%;
+		}
+		&__menu {
+			width: 320px;
+			justify-content: space-between;
+			padding: 0;
+		}
+	}
+}

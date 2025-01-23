@@ -1,0 +1,31 @@
+@media (max-width: 325px) {
+	.promo {
+		&__container {
+			padding: 40px 15px;
+		}
+		&__title {
+			margin-top: 0px;
+			width: 290px;
+			height: 130px;
+			font-size: 28px;
+			font-weight: 700;
+			line-height: 32px;
+		}
+		&__wrapper {
+			p {
+				margin-top: 20px;
+				width: 290px;
+				height: 70px;
+				font-size: 20px;
+				font-weight: 400;
+				line-height: 23px;
+			}
+		}
+		.button {
+			margin-top: 45px;
+		}
+		&__img {
+			display: none;
+		}
+	}
+}

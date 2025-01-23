@@ -1,0 +1,16 @@
+.button {
+	border-radius: 12px;
+	background: var(--base-color);
+	border: 0;
+	a {
+		color: var(--black-color);
+		font-weight: 400;
+		text-decoration: none;
+	}
+	&:hover {
+		background: var(--base-color-hover);
+	}
+	&:active {
+		background: var(--base-color-active);
+	}
+}
