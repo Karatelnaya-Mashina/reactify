@@ -1,0 +1,159 @@
+@media (max-width: 1440px) {
+	.container {
+		padding-inline: 36px;
+	}
+
+	.header {
+		&__wrapper {
+			&-body {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				width: 50%;
+				height: 50%;
+			}
+		}
+	}
+	.game {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		&__wrapper {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+			.city1,
+			.city2 {
+				width: 47%;
+			}
+			.city3 {
+				width: 100%;
+				aspect-ratio: 1;
+				object-fit: cover;
+			}
+		}
+	}
+	.play {
+		&__img {
+			&-console {
+				width: 45%;
+			}
+		}
+	}
+}
+
+@media (max-width: 1040px) {
+	.header {
+		&__wrapper {
+			&-body {
+				align-items: center;
+				padding: 20px;
+				height: 40%;
+			}
+			&-title {
+				text-align: center;
+			}
+		}
+	}
+	.play {
+		&__header {
+			flex-direction: column;
+			&-action {
+				width: 132px;
+
+				aspect-ratio: 1;
+			}
+		}
+		&__wrap {
+			width: 460px;
+		}
+		&__desc {
+			width: 460px;
+		}
+		&__img {
+			flex-direction: column;
+			margin-top: 95px;
+			margin-left: 32px;
+			&-console {
+				width: 100%;
+			}
+		}
+		&__body {
+			&-form {
+				margin-top: 120px;
+			}
+		}
+	}
+	.game {
+		&__title {
+			width: 90%;
+		}
+		&__desc {
+			width: 90%;
+		}
+	}
+	.diving {
+		&__images {
+			&-monitor {
+				width: 460px;
+				margin-bottom: 0;
+			}
+			&-img {
+				flex-direction: column;
+				row-gap: 15px;
+			}
+		}
+	}
+}
+
+@media (max-width: 870px) {
+	.header {
+		&__wrapper {
+			&-body {
+				width: 60%;
+				height: 30%;
+			}
+			&-button {
+				width: 100%;
+				font-size: 16px;
+			}
+		}
+	}
+	.diving {
+		&__container {
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+	.buy {
+		&__body {
+			display: flex;
+			flex-direction: column;
+			justify-content: end;
+			&-title {
+				width: 40%;
+			}
+		}
+	}
+	.play {
+		&__container {
+			justify-content: center;
+		}
+		&__header {
+			flex-direction: row;
+			&-title {
+				margin-top: 0;
+			}
+		}
+		&__img {
+			display: none;
+		}
+		&__body {
+			&-form {
+				margin-top: 25px;
+			}
+		}
+	}
+}
