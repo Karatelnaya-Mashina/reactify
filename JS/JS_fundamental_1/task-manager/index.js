@@ -1,5 +1,5 @@
 let task = prompt('Напиши задачу или оставь пустую строку');
-let comltetedTaskCount = 0;
+let completedTaskCount = 0;
 
 // Проверка, есть ли задача
 const showTask = item =>
@@ -7,13 +7,13 @@ const showTask = item =>
 
 console.log(showTask(task));
 
-// Добавляем задачу, если ее не
+// Добавляем задачу, если ее нет
 function setTask(taskDescription) {
 	if (task.split(' ').join('') === '') {
 		return (task = taskDescription);
 	} else {
 		let er = +prompt(
-			'Задача уже есть, надо завершить или удалить старую задачу, чтобы назначить новую. Напиши цифру.  Отмена = 0. Завершить = 1. Удалить = 2 - 9.'
+			'Задача уже есть, надо завершить или удалить старую задачу, чтобы назначить новую. Напиши цифру:  Отмена = 0. Завершить = 1. Удалить = 2 - 9.'
 		);
 		if (er === 1) {
 			completeTask(task);
