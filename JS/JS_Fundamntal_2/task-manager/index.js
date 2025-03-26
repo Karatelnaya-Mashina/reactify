@@ -3,7 +3,7 @@ let completedTasks = [];
 let tasks = [];
 
 // объекты для проверки, можно вставить в массив tasks
-// {
+//{
 // 	title: 'Pepsi',
 // 	description: 'drink',
 // 	isCompleted: false,
@@ -25,10 +25,9 @@ function taskAdd(tasks) {
 	if (tasks.length === 0) {
 		confirm('Задач нет. Добавим задачу, ок?') ? setTask() : 'Задач нет.';
 	}
-	return tasks
+	return tasks;
 }
 // console.log(taskAdd(tasks));
-
 
 // Показ задач
 function showTask(tasks) {
@@ -60,11 +59,11 @@ function completeTask(index, tasks) {
 	let taskComplete = tasks.find(task => task.id === index);
 	let obj = JSON.parse(JSON.stringify(taskComplete));
 	completedTasks.push(obj);
-	for (let i of completedTasks) {
-		i.isCompleted = true;
-		i.completedDate = new Date();
-		i.creadtedDate = new Date(i.creadtedDate);
-		i.leadTime = `Minutes: ${Math.round(
+	for (let task of completedTasks) {
+		task.isCompleted = true;
+		task.completedDate = new Date();
+		task.creadtedDate = new Date(i.creadtedDate);
+		task.leadTime = `Minutes: ${Math.round(
 			(i.completedDate.getTime() - i.creadtedDate.getTime()) / (1000 * 60)
 		)}`;
 	}
@@ -75,28 +74,29 @@ function completeTask(index, tasks) {
 // console.log(completeTask(1, tasks));  // 1 заменить на numID
 
 // Удаляем задачу
-function deleteTask(index, tasks) {
+function deleteTask(tasks, index) {
 	let taskIndex = tasks.findIndex(i => i.id === index);
-	if (taskIndex !== -1) {
-		if (tasks[taskIndex].isCompleted === false) {
-			let er = confirm('Задача не выполнена. Удалить задачу, ок?');
-			if (er === true) {
-				console.log('Задача удалена');
-				return tasks.splice(index, 1);
-			} else {
-				console.log('Отмена. Прежняя задача оставлена');
-			}
-		}
+
+	if (taskIndex === -1) {
+		console.log('Задача не найдена');
+		return;
+	}
+
+	if (tasks[taskIndex].isCompleted) {
 		return tasks.splice(index, 1);
+	} else {
+		let isDelete = confirm('Задача не выполнена. Удалить задачу, ок?');
+		if (isDelete) {
+			console.log('Задача удалена');
+			return tasks.splice(index, 1);
+		} else {
+			console.log('Отмена. Задача оставлена');
+		}
 	}
 }
+
 // console.log(deleteTask(1, tasks));
 
 // Очистка списка задач
-function clearTasks(arr) {
-	while (arr.length !== 0) {
-		arr.shift();
-	}
-	return arr;
-}
+const clearTasks = arr => (arr = []);
 // console.log(clearTasks(tasks));
