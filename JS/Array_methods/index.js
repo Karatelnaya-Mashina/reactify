@@ -108,30 +108,27 @@ const playersId = players.map(player => {
 	const countryName = countries.find(
 		country => country.id === player.countryId
 	).name;
-	return (cardsPlayers[countryName] = Object.values(player));
+	return (cardsPlayers[countryName] = player.name);
 });
 
 console.log(cardsPlayers);
 
 // Task 3
 console.log('Task 3');
-let maxGoals = 0;
-const commandGoals = teams.map(team => {
-	let command = {};
-	const teamPlayers = players
-		.filter(player => player.teamId === team.id)
-		.reduce((sum, player) => sum + player.goals, 0);
-	command = { name: team.name, goals: teamPlayers };
-	return command;
-});
-const goalsTotal = commandGoals.forEach(count => {
-	if (count.goals > maxGoals) maxGoals = count.goals;
-});
-const totalCommandGoals = commandGoals.find(
-	command => command.goals === maxGoals
-);
+let goalsCommand = 0;
+const maxCommandGoals = teams
+	.map(team => {
+		let command = {};
+		const teamPlayers = players
+			.filter(player => player.teamId === team.id)
+			.reduce((sum, player) => sum + player.goals, 0);
+		command = { name: team.name, goals: teamPlayers };
+		if (command.goals > goalsCommand) goalsCommand = command.goals;
+		return command;
+	})
+	.find(max => max.goals === goalsCommand);
 
-console.log(totalCommandGoals);
+console.log(maxCommandGoals);
 
 // Task 4
 console.log('Task 4');
@@ -147,9 +144,54 @@ function countriesId(id) {
 
 countriesId(1);
 
+// Task 5
+console.log('Task 5');
+
 players.push({ id: 6, name: 'Чпок Пупок', teamId: 2, countryId: 4, goals: 50 });
 
 console.log(players);
+
+// Task 6 Найдите лучшего игрока каждой страны
+console.log('------------------------------------------------');
+console.log('Task 6');
+
+const bestPlayersCounty = countries.map(country => {
+	const teamPlayers = players.filter(player => player.countryId === country.id);
+	const bestPlayerTeam = teamPlayers.reduce(
+		(quantity, player) => (player.goals > quantity.goals ? player : quantity),
+		teamPlayers[0]
+	);
+	return {
+		country: country.name,
+		name: bestPlayerTeam.name,
+		goals: bestPlayerTeam.goals,
+	};
+});
+
+console.log(bestPlayersCounty);
+
+// Task 7 Создание отчета о командах и игроках
+console.log('------------------------------------------------');
+console.log('Task 7');
+
+const teamsReport = teams.map(team => {
+	const country = countries.find(country => country.id === team.countryId).name;
+	const objTeamPlayers = players.filter(player => player.teamId === team.id);
+	const totalTeamGoals = objTeamPlayers.reduce(
+		(total, player) => player.goals + total,
+		0
+	);
+	const teamPlayers = objTeamPlayers.map(player => player.name).join(', ');
+
+	return {
+		teamName: team.name,
+		country: country,
+		players: teamPlayers,
+		totalGoals: totalTeamGoals,
+	};
+});
+
+console.log(teamsReport);
 
 // Управление данными о фильмах
 
@@ -288,3 +330,238 @@ const replacementMovies = movies.splice(
 );
 
 console.log(movies);
+
+// Управление базой данных сотрудников
+console.log('Управление базой данных сотрудников');
+
+const work = [
+	{ name: 'Алексей', position: 'Разработчик', startYear: 2018 },
+	{ name: 'Мария', position: 'Дизайнер', startYear: 2019 },
+	{ name: 'Иван', position: 'Аналитик', startYear: 2020 },
+];
+
+// Task 1
+// Добавление нового сотрудника
+console.log('Task 1');
+
+function addWorker(name, position, startYear) {
+	work.push({
+		name: name,
+		position: position,
+		startYear: startYear,
+	});
+	return work;
+}
+console.log(addWorker('Елена', 'Менеджер проектов', 2021));
+
+// Task 2
+// Поиск сотрудника по имени
+console.log('Task 2');
+
+const workerName = name => work.find(worker => worker.name === name);
+console.log(workerName('Мария'));
+
+// Task 3
+// Обновление информации о сотруднике
+console.log('Task 3');
+
+const updateWorker = (name, position) => {
+	const worker = work.find(work =>
+		work.name === name ? (work.position = Object.values(position).join('')) : ''
+	);
+	return worker;
+};
+
+console.log(updateWorker('Иван', { position: 'Старший аналитик' }));
+
+// Task 4
+// Удаление сотрудника из базы данных
+console.log('Task 4');
+
+function isDeleteWorker(name) {
+	const idWorker = work.findIndex(worker => worker.name === name);
+	const isDeleteWorker = work.splice(idWorker, 1);
+	return isDeleteWorker;
+}
+
+console.log(isDeleteWorker('Алексей'));
+
+// Task 5 Вывод сотрудников, работающих в компании более N лет: Разработайте функцию, которая выводит список сотрудников, работающих в компании более определенного количества лет.
+console.log('Task 5');
+function listWorkingMoreThanNYears(year) {
+	const currentDate = new Date().getFullYear();
+	return work.filter(worker => currentDate - worker.startYear > year);
+}
+
+console.log(listWorkingMoreThanNYears(4));
+
+// Поиск в массиве, связанные массивы
+console.log('Поиск в массиве, связанные массивы');
+
+const employees = [
+	{ name: 'Иван', age: 34, profession: 'Разработчик' },
+	{ name: 'Ольга', age: 40, profession: 'Тестировщик' },
+	{ name: 'Алексей', age: 45, profession: 'Менеджер' },
+];
+
+const professions = [
+	{ title: 'Разработчик', skills: ['JavaScript', 'React', 'Node.js'] },
+	{ title: 'Тестировщик', skills: ['Selenium', 'Postman'] },
+	{ title: 'Менеджер', skills: ['Управление', 'Agile', 'Scrum'] },
+];
+
+function findSkillsOfOldestDeveloper(employees, professions) {
+	// Поиск разработчика
+	const develop = employees.find(
+		employee => employee.profession === 'Разработчик'
+	);
+	// Найти среди сотрудников всех, кто старше найденного разработчика по полю age.
+	const allEmployeesOldDevelop = employees.filter(
+		human => human.age > develop.age
+	);
+	// Определить профессию самого старшего среди найденных сотрудников.
+	const oldEmployee = allEmployeesOldDevelop.reduce((old, employee) => {
+		return old.age > employee.age ? old.profession : employee.profession;
+	});
+	// Найти профессию самого старшего и получить его навыки
+	const professionOldEmployee = professions.find(profession =>
+		profession.title === oldEmployee ? profession : ''
+	).skills;
+	return professionOldEmployee;
+}
+
+console.log(findSkillsOfOldestDeveloper(employees, professions));
+
+// Обработка данных о погоде
+console.log('Обработка данных о погоде');
+
+const weatherData = [
+	{ date: '2024-04-01', maxTemp: 20, minTemp: 10, description: 'солнечно' },
+	{ date: '2024-04-02', maxTemp: 15, minTemp: 7, description: 'облачно' },
+	{ date: '2024-04-03', maxTemp: 17, minTemp: 9, description: 'дождь' },
+	{ date: '2024-04-04', maxTemp: 22, minTemp: 12, description: 'солнечно' },
+	{ date: '2024-04-05', maxTemp: 18, minTemp: 8, description: 'облачно' },
+];
+
+// Анализ температур
+// Task1
+console.log('Task 1');
+
+function calculateAverageTemperatures(temp) {
+	const maxTemp =
+		temp.reduce(
+			(averageTemp, temperature) => averageTemp + temperature.maxTemp,
+			0
+		) / temp.length;
+	const minTemp =
+		temp.reduce(
+			(averageTemp, temperature) => averageTemp + temperature.minTemp,
+			0
+		) / temp.length;
+
+	return {
+		maxAverageTemp: maxTemp,
+		minAverageTemp: minTemp,
+	};
+}
+
+console.log(calculateAverageTemperatures(weatherData));
+
+// Поиск экстремальных дней
+// Task 2
+console.log('Task 2');
+
+function findExtremeTemperatureDays(day) {
+	const dayMinTemp = day.reduce(
+		(temp, days) => (days.minTemp < temp ? days.minTemp : temp),
+		day[0].minTemp
+	);
+	const dayMaxTemp = day.reduce(
+		(temp, days) => (days.maxTemp > temp ? days.maxTemp : temp),
+		day[0].maxTemp
+	);
+	return { maxTemp: dayMaxTemp, minTemp: dayMinTemp };
+}
+
+console.log(findExtremeTemperatureDays(weatherData));
+
+// Классификация дней по погоде
+// Task 3
+console.log('Task 3');
+
+function classifyWeatherDays(classDays) {
+	let sunny = 0,
+		cloudy = 0,
+		rainy = 0;
+
+	classDays.forEach(weather =>
+		weather.description === 'солнечно'
+			? sunny++
+			: weather.description === 'облачно'
+			? cloudy++
+			: rainy++
+	);
+	return {
+		'Солнечная погода': sunny,
+		'Облачная погода': cloudy,
+		'Дождливая погода': rainy,
+	};
+}
+
+console.log(classifyWeatherDays(weatherData));
+
+// Форматирование вывода
+// Task 4
+console.log('Task 4');
+
+function formatWeatherData(report) {
+	return report.map(
+		infoFormat =>
+			`Дата: ${infoFormat.date}, Макс. темп.: ${infoFormat.maxTemp}, Мин. темп.: ${infoFormat.minTemp}, Погода: ${infoFormat.description}`
+	);
+}
+
+console.log(formatWeatherData(weatherData));
+
+// Сортировка и агрегация данных
+console.log('Сортировка и агрегация данных');
+
+const transactions = [
+	{ userID: 'user1', amount: 200, date: '2023-01-01' },
+	{ userID: 'user2', amount: 500, date: '2023-01-02' },
+	{ userID: 'user1', amount: 300, date: '2023-01-03' },
+	{ userID: 'user3', amount: 400, date: '2023-01-01' },
+	{ userID: 'user2', amount: 150, date: '2023-01-04' },
+	{ userID: 'user3', amount: 250, date: '2023-01-02' },
+	{ userID: 'user4', amount: 100, date: '2023-01-01' },
+];
+
+function topThreeUsersByTotalAmount(transactions) {
+	// Сгруппировать транзакции по userID.
+	let groupTransactionsById = {};
+	const groupById = transactions.forEach(user => {
+		if (!groupTransactionsById[user.userID])
+			groupTransactionsById[user.userID] = 0;
+		groupTransactionsById[user.userID] += user.amount;
+	});
+
+	// Для каждого пользователя вычислить общую сумму транзакций.
+	const reportUserTransactions = Object.entries(groupTransactionsById).map(
+		([userID, amount]) => {
+			return { userID, amount };
+		}
+	);
+
+	// Отсортировать пользователей по убыванию общей суммы транзакций.
+
+	const sortUserTransaction = reportUserTransactions.sort(
+		(a, b) => b.amount - a.amount
+	);
+
+	// Вывести топ-3 пользователя по общей сумме транзакций в формате
+
+	const topThreeUser = sortUserTransaction.slice(0, 3);
+	return topThreeUser;
+}
+
+console.log(topThreeUsersByTotalAmount(transactions));
