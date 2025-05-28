@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Практика с MutationObserver</title>
+		<style>
+			#itemList li {
+				margin: 5px 0;
+			}
+			#logArea {
+				margin-top: 20px;
+				border: 1px solid #ccc;
+				padding: 10px;
+				min-height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Практика с MutationObserver</h1>
+		<ul id="itemList">
+			<li>Элемент 1</li>
+		</ul>
+		<button id="addItemBtn">Добавить элемент</button>
+		<button id="changeFirstItemBtn">Изменить текст первого элемента</button>
+
+		<div id="logArea">Логи изменений будут появляться здесь.</div>
+
+		<script src="script.js"></script>
+	</body>
+</html>

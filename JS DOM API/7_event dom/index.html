@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Практика событий</title>
+		<style>
+			.highlight {
+				background-color: yellow;
+			}
+			button {
+				margin: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Практика работы с DOM-событиями</h1>
+
+		<!-- Блоки -->
+		<div
+			id="block1"
+			style="width: 100px; height: 100px; background: red; margin-bottom: 10px"
+		></div>
+		<div
+			id="block2"
+			style="width: 100px; height: 100px; background: blue"
+		></div>
+
+		<!-- Поля ввода -->
+		<h3>Заполните поля</h3>
+		<input id="input1" type="text" placeholder="Введите текст..." />
+		<input id="input2" type="number" placeholder="Введите число..." />
+
+		<!-- Кнопки -->
+		<h3>Нажмите на кнопки</h3>
+		<button id="btn1">Кнопка 1</button>
+		<button id="btn2">Кнопка 2</button>
+
+		<!-- Список -->
+		<h3>Список задач</h3>
+		<ul id="taskList">
+			<li>Задача 1</li>
+			<li>Задача 2</li>
+			<li>Задача 3</li>
+		</ul>
+
+		<script src="script.js"></script>
+	</body>
+</html>

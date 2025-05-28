@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Практическое задание</title>
+  <style>
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f4f4f4;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .box {
+      margin: 10px 0;
+      padding: 20px;
+      background-color: #ffeb3b;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .highlighted {
+      background-color: #ff5722;
+      color: white;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="container">
+    <h1>Практическое задание: Работа с DOM</h1>
+    <p>Выполняйте следующие задания, создавая, добавляя, перемещая и удаляя элементы.</p>
+
+    <div class="box" id="box1">Блок 1</div>
+    <div class="box" id="box2">Блок 2</div>
+    <div class="box" id="box3">Блок 3</div>
+    <div class="box" id="box4">Блок 4</div>
+
+    <div id="referenceBox" class="box hidden">Это блок-ссылка для вставки перед ним</div>
+
+    <button id="addElementBtn">Добавить элемент</button>
+    <button id="removeElementBtn">Удалить элемент</button>
+    <button id="toggleVisibilityBtn">Переключить видимость</button>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
