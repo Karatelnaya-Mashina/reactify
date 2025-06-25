@@ -1,0 +1,13 @@
+.footer {
+	padding: 30px var(--container-padding);
+	font-size: 32px;
+	font-weight: 600;
+	line-height: 100%;
+	background: var(--color-dark);
+	span:first-child {
+		color: var(--color-btn);
+	}
+	span:last-child {
+		color: var(--logo-color);
+	}
+}

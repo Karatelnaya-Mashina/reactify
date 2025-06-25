@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Best practice</title>
+		<style>
+			/* Добавим немного стилей для красивого отображения */
+			body {
+				font-family: Arial, sans-serif;
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 20px;
+			}
+			.search-bar {
+				margin-bottom: 20px;
+			}
+			.user-card {
+				border: 1px solid #ddd;
+				padding: 10px;
+				margin-bottom: 10px;
+				border-radius: 5px;
+			}
+			.user-card h3 {
+				margin: 0;
+			}
+			.modal {
+				display: none; /* Скрыто по умолчанию */
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.5);
+			}
+
+			.modal-content {
+				background-color: #fff;
+				margin: 10% auto;
+				padding: 20px;
+				width: 80%;
+				max-width: 500px;
+				border-radius: 5px;
+			}
+
+			.modal-close {
+				float: right;
+				font-size: 1.5em;
+				cursor: pointer;
+			}
+			.menu {
+				display: none;
+				background-color: #333;
+				padding: 10px;
+			}
+
+			.menu ul {
+				list-style: none;
+				padding: 0;
+			}
+
+			.menu ul li {
+				padding: 8px 0;
+			}
+
+			.menu ul li a {
+				color: #fff;
+				text-decoration: none;
+			}
+
+			.burger {
+				font-size: 1.5em;
+				cursor: pointer;
+			}
+			.slider {
+				text-align: center;
+			}
+			.slider__viewport {
+				display: inline-block;
+				width: 300px;
+				height: 200px;
+			}
+			.slider__image {
+				max-width: 100%;
+				display: none;
+			}
+			.slider__image.active {
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- HTML для меню-бургера -->
+		<header>
+			<div class="burger" id="burger">☰</div>
+			<nav id="menu" class="menu">
+				<ul>
+					<li><a href="#">Главная</a></li>
+					<li><a href="#">О нас</a></li>
+					<li><a href="#">Контакты</a></li>
+				</ul>
+			</nav>
+		</header>
+		<!-- Slider -->
+		<div class="slider">
+			<button id="prev">Назад</button>
+			<div class="slider__viewport">
+				<img class="slider__image" src="image1.jpg" alt="Slide 1" />
+				<img
+					class="slider__image"
+					src="image2.jpg"
+					alt="Slide 2"
+					style="display: none"
+				/>
+				<img
+					class="slider__image"
+					src="image3.jpg"
+					alt="Slide 3"
+					style="display: none"
+				/>
+			</div>
+			<button id="next">Вперед</button>
+		</div>
+		<h1>Список пользователей</h1>
+		<input
+			type="text"
+			id="search"
+			class="search-bar"
+			placeholder="Поиск по имени..."
+		/>
+		<div id="user-container"></div>
+
+		<!-- HTML для модального окна -->
+		<div id="modal" class="modal">
+			<div class="modal-content">
+				<span id="closeModal" class="modal-close">&times;</span>
+				<div id="modalBody"></div>
+			</div>
+		</div>
+
+		<script src="script.js"></script>
+	</body>
+</html>

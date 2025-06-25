@@ -1,0 +1,73 @@
+body {
+	box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+a {
+	color: inherit;
+	text-decoration: none;
+}
+img {
+	max-width: 100%;
+}
+body {
+	font-family: Arial, Verdana, sans-serif;
+}
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+.modal {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	background-color: rgba(0, 0, 0, 0.3);
+	display: grid;
+	align-items: center;
+	justify-content: center;
+	overflow: auto;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.4s, visibility 0.4s;
+}
+.modal__box {
+	position: relative;
+	max-width: 500px;
+	padding: 45px;
+	margin: 30px 15px;
+	z-index: 1;
+	background-color: #fff;
+	box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.3);
+	transform: scale(0);
+	transition: transform 0.8s;
+}
+.modal.open {
+	visibility: visible;
+	opacity: 1;
+}
+.modal.open .modal__box {
+	transform: scale(1);
+}
+.modal__btn {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	border: none;
+	background: transparent;
+	padding: 5px;
+	cursor: pointer;
+}
+.modal__btn svg path {
+	transition: fill 0.4s;
+}
+.modal__btn:hover svg path {
+	fill: red;
+}

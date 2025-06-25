@@ -1,0 +1,137 @@
+.header {
+	&__container {
+		padding: 0;
+	}
+	&__menu {
+		padding-inline: var(--container-padding);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		transition: all 0.8s ease;
+	}
+	&__list {
+		display: flex;
+		justify-content: space-between;
+	}
+	&__link {
+		margin: 0 30px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100px;
+		height: 30px;
+		font-size: 24px;
+		font-weight: 500;
+		line-height: 120%;
+		text-align: center;
+	}
+	&__logo {
+		align-items: center;
+		color: var(--logo-color);
+		font-size: 36px;
+		font-weight: 700;
+		line-height: 119%;
+		span {
+			color: var(--background-color);
+		}
+	}
+	&__wrap {
+		display: flex;
+		align-items: center;
+		&-profile {
+			display: flex;
+			height: 70px;
+			width: 70px;
+			cursor: pointer;
+		}
+	}
+	&__search {
+		border-radius: 10px;
+		border: 3px solid var(--color-btn);
+		outline: none;
+	}
+	&__search::placeholder {
+		text-align: center;
+	}
+
+	&__btn {
+		margin: 0 15px;
+		background-color: rgba(0, 0, 0, 0);
+		border: none;
+	}
+	&__preview {
+		background: url(../img/preview/BANNER.jpeg) center / cover no-repeat;
+	}
+	&__info {
+		padding: var(--container-padding);
+		padding-bottom: 0;
+
+		p {
+			margin-top: 40px;
+			font-size: 32px;
+			text-shadow: var(--text-shadow);
+			background: var(--transparent-background);
+			border-radius: 20px;
+			span {
+				color: rgba(255, 255, 255, 0.5);
+			}
+		}
+	}
+
+	&__title {
+		margin-top: 140px;
+		font-weight: 700;
+		line-height: 100%;
+		text-align: left;
+	}
+	&__description {
+		padding: 10px 10px;
+		margin-top: 40px;
+		width: 50%;
+		color: var(--color-light-gray);
+		font-size: 32px;
+		line-height: 100%;
+		text-shadow: var(--text-shadow);
+		background: var(--transparent-background);
+		border-radius: 20px;
+	}
+
+	&__preview-btn {
+		margin-top: 40px;
+		width: 330px;
+		height: 100px;
+		border-radius: 15px;
+		border: 1px solid black;
+		background: var(--color-btn);
+		font-size: 24px;
+		font-weight: 600;
+		color: var(--color-white);
+	}
+	&__card {
+		text-shadow: var(--text-shadow);
+		background: var(--transparent-background);
+		border-radius: 20px;
+		font-size: 40px;
+		font-weight: 700;
+		&-title {
+			padding-top: 90px;
+		}
+	}
+	&__wrapper {
+		display: flex;
+		justify-content: flex-start;
+		align-content: center;
+		img {
+			margin: 25px 15px;
+			width: 15%;
+			height: 30%;
+			cursor: pointer;
+			object-fit: cover;
+
+			&:hover {
+				transform: scale(1.05);
+				transition: var(--transition-duration);
+			}
+		}
+	}
+}

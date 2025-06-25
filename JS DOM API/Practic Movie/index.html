@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Movie Practice</title>
+		<link rel="stylesheet" href="./css/normalaze.css" />
+		<link rel="stylesheet" href="./css/clash-grotesk.css" />
+		<link rel="stylesheet" href="./css/style.min.css" />
+		<link
+			rel="apple-touch-icon"
+			sizes="57x57"
+			href="./img/favicon/apple-icon-57x57.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="60x60"
+			href="./img/favicon/apple-icon-60x60.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="72x72"
+			href="./img/favicon/apple-icon-72x72.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="76x76"
+			href="./img/favicon/apple-icon-76x76.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="114x114"
+			href="./img/favicon/apple-icon-114x114.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="120x120"
+			href="./img/favicon/apple-icon-120x120.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="144x144"
+			href="./img/favicon/apple-icon-144x144.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="152x152"
+			href="./img/favicon/apple-icon-152x152.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="./img/favicon/apple-icon-180x180.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="192x192"
+			href="./img/favicon/android-icon-192x192.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="./img/favicon/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="96x96"
+			href="./img/favicon/favicon-96x96.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="./img/favicon/favicon-16x16.png"
+		/>
+
+		<meta name="msapplication-TileColor" content="#ffffff" />
+		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+		<meta name="theme-color" content="#ffffff" />
+	</head>
+	<body>
+		<header class="header" id="header">
+			<div class="header__container container">
+				<nav class="header__menu">
+					<a class="header__logo" href="#"><span>MOVIE</span> VIBE</a>
+					<ul class="header__list">
+						<li class="header__link">
+							<a href="#preview">Превью</a>
+						</li>
+						<li class="header__link">
+							<a href="#popular">Популярное</a>
+						</li>
+						<li class="header__link">
+							<a href="#new">Новинки</a>
+						</li>
+						<li class="header__link">
+							<a href="#category">Категории</a>
+						</li>
+						<li class="header__link">
+							<a href="#footer">Инфо</a>
+						</li>
+					</ul>
+
+					<div class="header__wrap">
+						<label for="search"></label>
+						<input
+							type="text"
+							id="search"
+							class="header__search visually-hidden"
+							name="search"
+							placeholder="Поиск..."
+						/>
+						<button id="search-btn" class="header__btn">
+							<img src="./img/icon__search.png" alt="search" />
+						</button>
+						<img
+							id="profile"
+							class="header__wrap-profile"
+							href=""
+							src="./img/icons-profile.png"
+							alt="profile"
+						/>
+					</div>
+				</nav>
+				<section id="preview" class="header__preview">
+					<div id="header__info" class="header__info">
+						<h1 class="header__title">Мадам Паутина</h1>
+						<p>2024 | Страна : <span>USA</span></p>
+						<div class="header__description">
+							Медсестра из Манхэттена Кассандра Уэбб открывает в себе
+							способность видеть будущее и понимает, что может использовать эту
+							силу, чтобы его изменить.
+						</div>
+						<button
+							id="preview-btn"
+							class="header__preview-btn btn-animate btn"
+						>
+							<span>ПОДРОБНЕЕ</span>
+						</button>
+						<div class="header__card">
+							<h3 class="header__card-title">Рекомендации</h3>
+							<div class="header__wrapper">
+								<img src="./img/preview/batman.png" alt="Batman" />
+								<img src="./img/preview/monalisa.png" alt="Monalisa" />
+								<img src="./img/preview/godzila.png" alt="Godzila" />
+								<img src="./img/preview/gremlins.png" alt="gremlins" />
+								<img src="./img/preview/amazing.png" alt="Amazing" />
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</header>
+		<main id="main">
+			<section id="popular" class="popular">
+				<div class="popular__container container">
+					<scroll-slider>
+						<div class="popular__shell">
+							<h2 class="popular__title">Популярное</h2>
+							<scroll-slider-btn>
+								<scroll-slider-btn-prev
+									class="popular__arrow-prev"
+									tabindex="0"
+									hidden
+								>
+									<img id="prev-btn" src="./img/arrow-left.png" alt="left" />
+								</scroll-slider-btn-prev>
+								<scroll-slider-btn-next
+									class="popular__arrow-next"
+									tabindex="0"
+								>
+									<img id="next-btn" src="./img/arrow-right.png" alt="right" />
+								</scroll-slider-btn-next>
+							</scroll-slider-btn>
+						</div>
+						<scroll-slider-track class="popular__collection">
+							<img class="slide" src="./img/popular/batman.png" alt="Batman" />
+							<img
+								class="slide"
+								src="./img/popular/monalisa.png"
+								alt="Monalisa"
+							/>
+							<img
+								class="slide"
+								src="./img/popular/gremlins.png"
+								alt="Gremlins"
+							/>
+							<img
+								class="slide"
+								src="./img/popular/amazing.png"
+								alt="Amazing"
+							/>
+							<img class="slide" src="./img/popular/madame.png" alt="Madame" />
+							<img class="slide" src="./img/popular/madame.png" alt="Madame" />
+							<img class="slide" src="./img/popular/madame.png" alt="Madame" />
+							<img class="slide" src="./img/popular/madame.png" alt="Madame" />
+						</scroll-slider-track>
+					</scroll-slider>
+					<div class="popular__banner">
+						<h3 class="popular__banner-title">Тёмный рыцарь</h3>
+						<p>Рейтинг: <span>9</span> 2008</p>
+						<div class="popular__description">
+							Бэтмен поднимает ставки в войне с криминалом. С помощью лейтенанта
+							Джима Гордона и прокурора Харви Дента он намерен очистить улицы
+							Готэма от преступности. Сотрудничество оказывается эффективным, но
+							скоро они обнаружат себя посреди хаоса, развязанного восходящим
+							криминальным гением, известным напуганным горожанам под именем
+							Джокер.
+						</div>
+						<button class="popular__banner-btn btn-animate btn">
+							<span>ТРЕЙЛЕР</span>
+						</button>
+						<button class="popular__banner-btn two-btn btn-animate btn">
+							<span>СМОТРЕТЬ СЕЙЧАС</span>
+						</button>
+					</div>
+				</div>
+			</section>
+			<section id="new" class="new">
+				<div class="new__container container">
+					<scroll-slider>
+						<div class="popular__shell">
+							<h2 class="new__title">НОВИНКИ</h2>
+							<scroll-slider-btn>
+								<scroll-slider-btn-prev
+									class="popular__arrow-prev"
+									tabindex="0"
+									hidden
+								>
+									<img id="prev-btn" src="./img/arrow-left.png" alt="left" />
+								</scroll-slider-btn-prev>
+								<scroll-slider-btn-next
+									class="popular__arrow-next"
+									tabindex="0"
+								>
+									<img id="next-btn" src="./img/arrow-right.png" alt="right" />
+								</scroll-slider-btn-next>
+							</scroll-slider-btn>
+						</div>
+						<scroll-slider-track class="new__collection">
+							<img class="slide" src="./img/preview/batman.png" alt="Batman" />
+							<img
+								class="slide"
+								src="./img/preview/monalisa.png"
+								alt="Monalisa"
+							/>
+							<img
+								class="slide"
+								src="./img/preview/godzila.png"
+								alt="Godzila"
+							/>
+							<img
+								class="slide"
+								src="./img/preview/gremlins.png"
+								alt="gremlins"
+							/>
+							<img
+								class="slide"
+								src="./img/preview/amazing.png"
+								alt="Amazing"
+							/>
+							<img
+								class="slide"
+								src="./img/preview/amazing.png"
+								alt="Amazing"
+							/>
+							<img
+								class="slide"
+								src="./img/preview/amazing.png"
+								alt="Amazing"
+							/>
+						</scroll-slider-track>
+					</scroll-slider>
+				</div>
+			</section>
+			<section class="category" id="category">
+				<div class="category__container container">
+					<scroll-slider>
+						<div class="category__shell popular__shell">
+							<div class="category__wrapper">
+								<h2 class="category__title">КАТЕГОРИИ</h2>
+								<scroll-slider-btn>
+									<scroll-slider-btn-prev
+										class="popular__arrow-prev"
+										tabindex="0"
+										hidden
+									>
+										<img id="prev-btn" src="./img/arrow-left.png" alt="left" />
+									</scroll-slider-btn-prev>
+									<scroll-slider-btn-next
+										class="popular__arrow-next"
+										tabindex="0"
+									>
+										<img
+											id="next-btn"
+											src="./img/arrow-right.png"
+											alt="right"
+										/>
+									</scroll-slider-btn-next>
+								</scroll-slider-btn>
+							</div>
+							<div class="category__box">
+								<select name="" id="">
+									<option value="disabled selected hidden">Фильмы</option>
+									<option value="selected">Сериалы</option>
+									<option value="selected">Шоу</option>
+									<option value="selected">ТВ</option>
+								</select>
+								<select name="" id="">
+									<option value="disabled selected hidden">Жанр</option>
+									<option value="selected">Комедия</option>
+									<option value="selected">Ужасы</option>
+									<option value="selected">Боевик</option>
+									<option value="selected">Аниме</option>
+									<option value="selected">Военный</option>
+									<option value="selected">Детский</option>
+									<option value="selected">Драма</option>
+									<option value="selected">Криминал</option>
+									<option value="selected">Фантастика</option>
+								</select>
+								<select name="" id="">
+									<option value="disabled selected hidden">Рейтинг</option>
+									<option value=" selected ">от 1</option>
+									<option value=" selected ">от 2</option>
+									<option value=" selected ">от 3</option>
+									<option value=" selected ">от 4</option>
+									<option value=" selected ">от 5</option>
+									<option value=" selected ">от 6</option>
+									<option value=" selected ">от 7</option>
+									<option value=" selected ">от 8</option>
+									<option value=" selected ">от 9</option>
+								</select>
+								<select name="" id="">
+									<option value="disabled selected hidden">Россия</option>
+									<option value=" selected ">Зарубежные</option>
+								</select>
+								<select name="" id="">
+									<option value="disabled selected hidden">Актеры</option>
+									<option value=" selected ">1</option>
+									<option value=" selected ">2</option>
+								</select>
+								<select name="" id="">
+									<option value="disabled selected hidden">Год от</option>
+									<option value=" selected ">от 2000</option>
+									<option value=" selected ">от 2005</option>
+									<option value=" selected ">от 2010</option>
+									<option value=" selected ">от 2015</option>
+									<option value=" selected ">от 2020</option>
+									<option value=" selected ">от 2025</option>
+								</select>
+								<select name="" id="">
+									<option value="disabled selected hidden">Год до</option>
+									<option value=" selected ">до 2000</option>
+									<option value=" selected ">до 2005</option>
+									<option value=" selected ">до 2010</option>
+									<option value=" selected ">до 2015</option>
+									<option value=" selected ">до 2020</option>
+									<option value=" selected ">до 2025</option>
+								</select>
+								<button type="submit" class="category__btn btn-animate btn">
+									<span>Подборка</span>
+								</button>
+							</div>
+						</div>
+						<scroll-slider-track class="popular__collection">
+							<img class="slide" src="./img/popular/batman.png" alt="Batman" />
+							<img
+								class="slide"
+								src="./img/popular/monalisa.png"
+								alt="Monalisa"
+							/>
+							<img
+								class="slide"
+								src="./img/popular/gremlins.png"
+								alt="Gremlins"
+							/>
+							<img
+								class="slide"
+								src="./img/popular/amazing.png"
+								alt="Amazing"
+							/>
+							<img class="slide" src="./img/popular/madame.png" alt="Madame" />
+							<img class="slide" src="./img/popular/madame.png" alt="Madame" />
+							<img class="slide" src="./img/popular/madame.png" alt="Madame" />
+							<img class="slide" src="./img/popular/madame.png" alt="Madame" />
+						</scroll-slider-track>
+					</scroll-slider>
+					<div class="popular__banner">
+						<h3 class="popular__banner-title">Тёмный рыцарь</h3>
+						<p>Рейтинг: <span>9</span> 2008</p>
+						<div class="popular__description">
+							Бэтмен поднимает ставки в войне с криминалом. С помощью лейтенанта
+							Джима Гордона и прокурора Харви Дента он намерен очистить улицы
+							Готэма от преступности. Сотрудничество оказывается эффективным, но
+							скоро они обнаружат себя посреди хаоса, развязанного восходящим
+							криминальным гением, известным напуганным горожанам под именем
+							Джокер.
+						</div>
+						<button class="popular__banner-btn btn-animate btn">
+							<span>ТРЕЙЛЕР</span>
+						</button>
+						<button class="popular__banner-btn two-btn btn-animate btn">
+							<span>СМОТРЕТЬ СЕЙЧАС</span>
+						</button>
+					</div>
+					<div class="category__wrapper"></div>
+				</div>
+			</section>
+		</main>
+		<footer id="footer" class="footer">
+			© 2025 <span>MOVIE</span> <span>VIBE</span>. Приятного просмотра ❤️
+		</footer>
+		<div id="modal-profile" class="modal__profile">
+			<div class="modal__box-profile">
+				<h2>My modal window</h2>
+				<button id="modal-btn" class="modal__btn-profile">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						x="0px"
+						y="0px"
+						width="12"
+						height="12"
+						viewBox="0 0 20 20"
+					>
+						<path
+							d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z"
+						></path>
+					</svg>
+				</button>
+				<p>
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint
+					perspiciatis magni ullam, veritatis atque impedit voluptas eos porro
+					mollitia excepturi error fugit ex similique, repudiandae laboriosam
+					vel, qui maxime repellat.
+				</p>
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum dicta
+					repellendus saepe, provident corrupti aspernatur, itaque ex id numquam
+					unde repellat iusto voluptas hic dolore cupiditate minima ut, optio
+					ipsum neque similique at! Sequi repellat doloribus saepe molestiae
+					quidem eligendi totam! Voluptatibus, reiciendis corporis quia mollitia
+					delectus architecto corrupti cum repudiandae placeat omnis ipsum
+					dolorum! Animi, aliquid atque consequatur veritatis nihil harum
+					repudiandae! Delectus minus dignissimos vitae voluptatum hic. Velit
+					consequuntur corporis, nobis incidunt laudantium odio temporibus
+					impedit ut eveniet explicabo iste eum modi molestiae perferendis nihil
+					non ipsum voluptatem ullam nisi dignissimos! Repudiandae corporis
+					dolorum nihil modi mollitia eos?
+				</p>
+			</div>
+		</div>
+		<div id="modal-details" class="modal__details">
+			<div class="modal__box-details">
+				<h2>My modal window</h2>
+				<button id="modal-btn" class="modal__btn-details">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						x="0px"
+						y="0px"
+						width="12"
+						height="12"
+						viewBox="0 0 20 20"
+					>
+						<path
+							d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z"
+						></path>
+					</svg>
+				</button>
+				<p>
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint
+					perspiciatis magni ullam, veritatis atque impedit voluptas eos porro
+					mollitia excepturi error fugit ex similique, repudiandae laboriosam
+					vel, qui maxime repellat.
+				</p>
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum dicta
+					repellendus saepe, provident corrupti aspernatur, itaque ex id numquam
+					unde repellat iusto voluptas hic dolore cupiditate minima ut, optio
+					ipsum neque similique at! Sequi repellat doloribus saepe molestiae
+					quidem eligendi totam! Voluptatibus, reiciendis corporis quia mollitia
+					delectus architecto corrupti cum repudiandae placeat omnis ipsum
+					dolorum! Animi, aliquid atque consequatur veritatis nihil harum
+					repudiandae! Delectus minus dignissimos vitae voluptatum hic. Velit
+					consequuntur corporis, nobis incidunt laudantium odio temporibus
+					impedit ut eveniet explicabo iste eum modi molestiae perferendis nihil
+					non ipsum voluptatem ullam nisi dignissimos! Repudiandae corporis
+					dolorum nihil modi mollitia eos?
+				</p>
+			</div>
+		</div>
+		<script type="module" src="./js/index.js"></script>
+		<script type="module" src="./js/modal.js"></script>
+	</body>
+</html>

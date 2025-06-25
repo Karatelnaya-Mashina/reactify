@@ -1,0 +1,18 @@
+.new {
+	&__collection {
+		display: flex;
+		justify-content: space-evenly;
+		align-content: center;
+		img {
+			margin: 0 25px;
+			width: 435px;
+			height: 630px;
+			&:hover,
+			&:focus {
+				border: 2px solid var(--color-btn);
+				border-radius: 10px;
+				cursor: pointer;
+			}
+		}
+	}
+}
