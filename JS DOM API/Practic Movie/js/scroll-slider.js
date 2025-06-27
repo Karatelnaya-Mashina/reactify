@@ -1,6 +1,7 @@
 export default class ScrollSlider extends HTMLElement {
 	constructor() {
 		super();
+
 		this.prevBtn?.addEventListener('click', () => {
 			this.track.scrollToPrev();
 		});

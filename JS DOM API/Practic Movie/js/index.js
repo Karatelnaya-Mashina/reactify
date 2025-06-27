@@ -1,5 +1,6 @@
 import ScrollSlider from './scroll-slider.js';
 import ScrollSliderTrack from './scroll-slider-track.js';
+import ModalWindow from './modal.js';
 
 // Вкл. поисковика
 function showSearch() {
@@ -7,34 +8,6 @@ function showSearch() {
 	search.classList.toggle('visually-hidden');
 }
 document.getElementById('search-btn').addEventListener('click', showSearch);
-
-// Модальное окно профиля
-const btnOpenModal = document.querySelector('#profile');
-const modal = document.querySelector('.modal__profile');
-const modalBtn = document.querySelector('.modal__btn-profile');
-
-btnOpenModal.addEventListener('click', function () {
-	modal.classList.add('open');
-});
-modalBtn.addEventListener('click', function () {
-	modal.classList.remove('open');
-});
-
-// Закрыть окно при нажатии ESC
-window.addEventListener('keydown', e => {
-	if (e.key === 'Escape') {
-		modal.classList.remove('open');
-	}
-});
-
-// Закрыть окно при клике вне его
-document
-	.querySelector('#modal .modal__box-profile')
-	.addEventListener('click', e => [(e._isClickWithInModal = true)]);
-modal.addEventListener('click', e => {
-	if (e._isClickWithInModal) return;
-	e.currentTarget.classList.remove('open');
-});
 
 // const KEY_API = 'BTRBF0G-Z4B4NNJ-GH1044H-2TJFWHP';
 // const test =

@@ -132,6 +132,9 @@
 				transform: scale(1.05);
 				transition: var(--transition-duration);
 			}
+			&:active {
+				transform: scale(0.9);	
+			}
 		}
 	}
 }
