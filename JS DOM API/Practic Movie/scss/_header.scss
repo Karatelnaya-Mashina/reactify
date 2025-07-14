@@ -67,6 +67,7 @@
 		padding-bottom: 0;
 
 		p {
+			width: 50%;
 			margin-top: 40px;
 			font-size: 32px;
 			text-shadow: var(--text-shadow);
@@ -124,7 +125,7 @@
 		img {
 			margin: 25px 15px;
 			width: 15%;
-			height: 30%;
+			// height: 30%;
 			cursor: pointer;
 			object-fit: cover;
 
@@ -133,7 +134,7 @@
 				transition: var(--transition-duration);
 			}
 			&:active {
-				transform: scale(0.9);	
+				transform: scale(0.9);
 			}
 		}
 	}

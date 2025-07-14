@@ -3,6 +3,8 @@ export default class ModalWindow extends HTMLElement {
 		super();
 
 		this.btnOpenModalMovie.addEventListener('click', () => {
+			console.log('click');
+
 			this.modalMovie.classList.add('open');
 		});
 		this.modalBtnMovie.addEventListener('click', () => {

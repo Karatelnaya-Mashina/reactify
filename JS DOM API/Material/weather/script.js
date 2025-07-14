@@ -27,6 +27,7 @@ const fetchData = async () => {
 		const query = localStorage.getItem('query') || store.city;
 		const result = await fetch(`${KEY_API}&query=${query}`);
 		const data = await result.json();
+		console.log(data);
 
 		const {
 			current: {
