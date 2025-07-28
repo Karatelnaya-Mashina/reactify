@@ -106,14 +106,16 @@
 						</ul>
 
 						<div class="header__wrap">
-							<label for="search"></label>
-							<input
-								type="text"
-								id="search"
-								class="header__search visually-hidden"
-								name="search"
-								placeholder="Поиск..."
-							/>
+							<form action="">
+								<label for="search"></label>
+								<input
+									type="text"
+									id="search"
+									class="header__search visually-hidden"
+									name="search"
+									placeholder="Поиск..."
+								/>
+							</form>
 							<button id="search-btn" class="header__btn">
 								<img src="./img/icon__search.png" alt="search" />
 							</button>
@@ -126,36 +128,36 @@
 							/>
 						</div>
 					</nav>
-					<section id="preview" class="header__preview">
-						<div id="header__info" class="header__info">
-							<h1 class="header__title">Мадам Паутина</h1>
-							<p>2024 | Страна : <span>США</span></p>
-							<div class="header__description">
-								Медсестра из Манхэттена Кассандра Уэбб открывает в себе
-								способность видеть будущее и понимает, что может использовать
-								эту силу, чтобы его изменить.
-							</div>
-							<button-modal
-								id="preview-btn"
-								class="header__preview-btn btn-animate btn"
-							>
-								<span>ПОДРОБНЕЕ</span>
-							</button-modal>
-							<div class="header__card">
-								<h3 class="header__card-title">Рекомендации</h3>
-								<div class="header__wrapper">
-									<img src="./img/preview/batman.png" alt="Batman" />
-									<img src="./img/preview/monalisa.png" alt="Monalisa" />
-									<img src="./img/preview/godzila.png" alt="Godzila" />
-									<img src="./img/preview/gremlins.png" alt="gremlins" />
-									<img src="./img/preview/amazing.png" alt="Amazing" />
-								</div>
-							</div>
-						</div>
-					</section>
 				</div>
 			</header>
 			<main id="main">
+				<section id="preview" class="header__preview">
+					<div id="header__info" class="header__info">
+						<h1 class="header__title">Мадам Паутина</h1>
+						<p>2024 | Страна : <span>США</span></p>
+						<div class="header__description">
+							Медсестра из Манхэттена Кассандра Уэбб открывает в себе
+							способность видеть будущее и понимает, что может использовать эту
+							силу, чтобы его изменить.
+						</div>
+						<button
+							id="preview-btn"
+							class="header__preview-btn btn-animate btn"
+						>
+							<span>ПОДРОБНЕЕ</span>
+						</button>
+						<div class="header__card">
+							<h3 class="header__card-title">Рекомендации</h3>
+							<div class="header__wrapper">
+								<img src="./img/preview/batman.png" alt="Batman" />
+								<img src="./img/preview/monalisa.png" alt="Monalisa" />
+								<img src="./img/preview/godzila.png" alt="Godzila" />
+								<img src="./img/preview/gremlins.png" alt="gremlins" />
+								<img src="./img/preview/amazing.png" alt="Amazing" />
+							</div>
+						</div>
+					</div>
+				</section>
 				<section id="popular" class="popular">
 					<div class="popular__container container">
 						<scroll-slider>
@@ -240,6 +242,12 @@
 							</button>
 							<button class="popular__banner-btn two-btn btn-animate btn">
 								<span>СМОТРЕТЬ СЕЙЧАС</span>
+							</button>
+							<button
+								id="modal-btn"
+								class="popular__banner-btn three-btn btn-animate btn"
+							>
+								<span>Подробнее</span>
 							</button>
 						</div>
 					</div>
@@ -479,8 +487,8 @@
 								xmlns="http://www.w3.org/2000/svg"
 								x="0px"
 								y="0px"
-								width="12"
-								height="12"
+								width="20"
+								height="20"
 								viewBox="0 0 20 20"
 							>
 								<path
@@ -581,8 +589,64 @@
 								xmlns="http://www.w3.org/2000/svg"
 								x="0px"
 								y="0px"
-								width="12"
-								height="12"
+								width="20"
+								height="20"
+								viewBox="0 0 20 20"
+							>
+								<path
+									d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z"
+								></path>
+							</svg>
+						</button>
+					</div>
+					<div class="modal__wrapper">
+						<div class="modal__genres">
+							<button class="modal__genres-btn">Боевик</button>
+							<button class="modal__genres-btn">Драма</button>
+							<button class="modal__genres-btn">Фантастика</button>
+						</div>
+						<div class="modal__button">
+							<button class="modal__button-play btn-animate btn">
+								<span>Смотреть</span>
+							</button>
+							<button class="modal__button-trailer btn-animate btn">
+								<span>Трейлер</span>
+							</button>
+							<button class="modal__button-like">
+								<img src="./img/like.png" alt="like" />
+							</button>
+							<button class="modal__button-share">
+								<img src="./img/share.png" alt="share" />
+								<p>Поделиться</p>
+							</button>
+						</div>
+					</div>
+					<div class="modal__info">
+						<div class="modal__info-rating">Рейтинг: 9</div>
+						<div class="modal__info-year">2008</div>
+						<div class="modal__info-country">Страна: USA</div>
+					</div>
+					<p>
+						Бэтмен поднимает ставки в войне с криминалом. С помощью лейтенанта
+						Джима Гордона и прокурора Харви Дента он намерен очистить улицы
+						Готэма от преступности. Сотрудничество оказывается эффективным, но
+						скоро они обнаружат себя посреди хаоса, развязанного восходящим
+						криминальным гением, известным напуганным горожанам под именем
+						Джокер.
+					</p>
+				</div>
+			</div>
+			<div id="modal-search" class="modal__search">
+				<div class="modal__box-search">
+					<div class="modal__header">
+						<h2 class="modal__title-search">Темный рыцарь</h2>
+						<button id="modal-btn" class="modal__btn-search">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								x="0px"
+								y="0px"
+								width="20"
+								height="20"
 								viewBox="0 0 20 20"
 							>
 								<path
@@ -630,6 +694,5 @@
 			</div>
 		</custom-box>
 		<script type="module" src="./js/index.js"></script>
-		<!-- <script type="module" src="./js/modal.js"></script> -->
 	</body>
 </html>

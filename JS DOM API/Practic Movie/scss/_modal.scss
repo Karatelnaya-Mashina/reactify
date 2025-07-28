@@ -1,7 +1,8 @@
 // Модальное окно профиля
 .modal {
 	&__profile,
-	&__details {
+	&__details,
+	&__search {
 		position: fixed;
 		left: 0;
 		top: 0;
@@ -23,7 +24,8 @@
 	}
 
 	&__box-profile,
-	&__box-details {
+	&__box-details,
+	&__box-search {
 		position: relative;
 		min-width: 500px;
 		padding: 45px;
@@ -37,11 +39,13 @@
 	}
 
 	.open &__box-profile,
-	.open &__box-details {
+	.open &__box-details,
+	.open &__box-search {
 		transform: scale(1);
 	}
 	&__btn-profile,
-	&__btn-details {
+	&__btn-details,
+	&__btn-search {
 		position: absolute;
 		top: 8px;
 		right: 8px;
@@ -51,12 +55,14 @@
 		cursor: pointer;
 	}
 	&__btn-profile svg path,
-	&__btn-details svg path {
+	&__btn-details svg path,
+	&__btn-search svg path {
 		transition: fill 0.4s;
 		fill: var(--color-light);
 	}
 	&__btn-profile:hover svg path,
-	&__btn-details:hover svg path {
+	&__btn-details:hover svg path,
+	&__btn-search:hover svg path {
 		fill: red;
 	}
 
@@ -131,7 +137,10 @@
 
 	// Модальное окно деталей фильма
 	&__box {
-		&-details {
+		&-details,
+		&-search {
+			margin: 0 auto;
+			width: 80%;
 			background: url(../img/modal-banner.jpeg) center / cover no-repeat;
 			p {
 				margin-top: 25px;
@@ -141,7 +150,8 @@
 			}
 		}
 	}
-	&__title-details {
+	&__title-details,
+	&__title-search {
 		margin-top: 370px;
 	}
 	&__wrapper {
@@ -150,6 +160,10 @@
 		align-content: center;
 	}
 	&__genres {
+		display: flex;
+		justify-content: space-between;
+		width: 425px;
+
 		&-btn {
 			margin-top: 25px;
 			width: 135px;
@@ -211,7 +225,7 @@
 			}
 		}
 		&-share {
-			width: 300px;
+			width: 270px;
 			height: 100px;
 			display: flex;
 			flex-direction: row;

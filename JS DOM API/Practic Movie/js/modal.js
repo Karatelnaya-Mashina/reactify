@@ -1,49 +1,71 @@
 export default class ModalWindow extends HTMLElement {
 	constructor() {
 		super();
+	}
 
-		this.btnOpenModalMovie.addEventListener('click', () => {
-			console.log('click');
+	connectedCallback() {
+		this.addEventListener('click', e => {
+			const profileModal = this.modalProfile;
+			const detailsModal = this.modalMovie;
+			const searchModal = this.modalSearch;
 
-			this.modalMovie.classList.add('open');
-		});
-		this.modalBtnMovie.addEventListener('click', () => {
-			this.modalMovie.classList.remove('open');
-		});
-
-		this.btnOpenModalProfile.addEventListener('click', () => {
-			this.modalProfile.classList.add('open');
-		});
-		this.modalBtnProfile.addEventListener('click', () => {
-			this.modalProfile.classList.remove('open');
-		});
-
-		// Закрыть окно при нажатии ESC
-		window.addEventListener('keydown', e => {
-			if (e.key === 'Escape') {
-				this.modalProfile.classList.remove('open');
-				this.modalMovie.classList.remove('open');
+			// open
+			if (e.target.matches('#preview-btn > span')) {
+				detailsModal.classList.add('open');
+			} else if (e.target.matches('#profile')) {
+				profileModal.classList.add('open');
+			} else if (e.target.matches('#modal-btn > span')) {
+				searchModal.classList.add('open');
 			}
-		});
+			// close
+			if (e.target.matches('.modal__btn-profile > svg')) {
+				profileModal.classList.remove('open');
+			}
+			if (e.target.matches('.modal__btn-details > svg')) {
+				detailsModal.classList.remove('open');
+			}
+			if (e.target.matches('.modal__btn-search > svg')) {
+				console.log('e.target');
 
-		// Закрыть окно при клике вне его
-		document
-			.querySelector('#modal-profile .modal__box-profile')
-			.addEventListener('click', e => [(e._isClickWithInModal = true)]);
-		this.modalProfile.addEventListener('click', e => {
-			if (e._isClickWithInModal) return;
-			e.currentTarget.classList.remove('open');
-		});
+				searchModal.classList.remove('open');
+			}
 
-		document
-			.querySelector('#modal-details .modal__box-details')
-			.addEventListener('click', e => [(e._isClickWithInModal = true)]);
+			// Закрыть окно при нажатии ESC
+			window.addEventListener('keydown', e => {
+				if (e.key === 'Escape') {
+					profileModal.classList.remove('open');
+					detailsModal.classList.remove('open');
+					searchModal.classList.remove('open');
+				}
+			});
+			// Закрыть окно при клике вне его
+			document
+				.querySelector('#modal-profile .modal__box-profile')
+				.addEventListener('click', e => [(e._isClickWithInModal = true)]);
+			profileModal.addEventListener('click', e => {
+				if (e._isClickWithInModal) return;
+				e.currentTarget.classList.remove('open');
+			});
 
-		this.modalMovie.addEventListener('click', e => {
-			if (e._isClickWithInModal) return;
-			e.currentTarget.classList.remove('open');
+			document
+				.querySelector('#modal-details .modal__box-details')
+				.addEventListener('click', e => [(e._isClickWithInModal = true)]);
+
+			detailsModal.addEventListener('click', e => {
+				if (e._isClickWithInModal) return;
+				e.currentTarget.classList.remove('open');
+			});
+			document
+				.querySelector('#modal-search .modal__box-search')
+				.addEventListener('click', e => [(e._isClickWithInModal = true)]);
+
+			searchModal.addEventListener('click', e => {
+				if (e._isClickWithInModal) return;
+				e.currentTarget.classList.remove('open');
+			});
 		});
 	}
+
 	get btnOpenModalProfile() {
 		return this.querySelector('#profile');
 	}
@@ -60,7 +82,16 @@ export default class ModalWindow extends HTMLElement {
 		return this.querySelector('.modal__details');
 	}
 	get modalBtnMovie() {
-		return this.querySelector('.modal__box-details');
+		return this.querySelector('.modal__btn-details');
+	}
+	get btnOpenModalResponseSearch() {
+		return this.querySelector('#modal-btn');
+	}
+	get modalSearch() {
+		return this.querySelector('.modal__search');
+	}
+	get modalBtnSearch() {
+		return this.querySelector('.modal__btn-search');
 	}
 }
 

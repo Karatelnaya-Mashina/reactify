@@ -29,8 +29,11 @@ scroll-slider-track {
 
 	img {
 		margin: 0 25px;
-		width: 435px;
-		height: 210px;
+		width: 235px;
+		height: 350px;
+		img {
+			object-fit: cover;
+		}
 		&:hover,
 		&:focus {
 			border: 2px solid var(--color-btn);

@@ -1,7 +1,7 @@
 const KEY_API = '5374a772-2b3c-485b-b3e2-432e1c94d40f';
 
 const preview = document.getElementById('preview');
-const btn = document.getElementById('preview-btn');
+const boxDetails = document.querySelector('.modal__box-details');
 
 let dataPreview = {
 	nameRu: 'Мадам Паутина',
@@ -27,12 +27,13 @@ export async function fetchMovies(url) {
 		const data = await response.json();
 
 		let index = 0;
-		console.log(data.items[index]);
 
 		const {
 			nameRu,
 			description,
 			year,
+			ratingImdb,
+			genres,
 			countries: {
 				0: { country },
 			},
@@ -44,16 +45,15 @@ export async function fetchMovies(url) {
 			nameRu,
 			description,
 			year,
+			ratingImdb,
+			genres,
 			countries: {
 				0: { country },
 			},
 			posterUrl,
 		};
 
-		recommendationsPreview = data.items.slice(1, 6);
-
-		// console.log(dataPreview);
-		// console.log(recommendationsPreview);
+		recommendationsPreview = data.items.slice(1, 7);
 
 		renderPreview();
 	} catch (error) {
@@ -63,7 +63,7 @@ export async function fetchMovies(url) {
 
 const renderPreview = () => {
 	preview.innerHTML = markup();
-	console.log(btn);
+	boxDetails.innerHTML = markupModal();
 };
 
 const markup = () => {
@@ -76,7 +76,14 @@ const markup = () => {
 		},
 		posterUrl,
 	} = dataPreview;
-	const bannerRecommendation = recommendationsPreview;
+
+	const bannerRecommendation = recommendationsPreview
+		.map(
+			item => `
+        <img src="${item.posterUrl}" alt="${item.nameRu}" />
+      `
+		)
+		.join('');
 
 	preview.style.background = `url(${posterUrl}) center / cover no-repeat`;
 
@@ -86,23 +93,90 @@ const markup = () => {
 					<div class="header__description">
 						${description}
 					</div>
-					<button-modal
+					<button
 						id="preview-btn"
 						class="header__preview-btn btn-animate btn"
 					>
 						<span>ПОДРОБНЕЕ</span>
-					</button-modal>
+			 		</button>
 					<div class="header__card">
 						<h3 class="header__card-title">Рекомендации</h3>
 						<div class="header__wrapper">
-							<img src="${bannerRecommendation[0].posterUrl}" alt="${bannerRecommendation[0].nameRu}" />
-							<img src="${bannerRecommendation[1].posterUrl}" alt="${bannerRecommendation[1].nameRu}" />
-							<img src="${bannerRecommendation[2].posterUrl}" alt="${bannerRecommendation[2].nameRu}" />
-							<img src="${bannerRecommendation[3].posterUrl}" alt="${bannerRecommendation[3].nameRu}" />
-							<img src="${bannerRecommendation[4].posterUrl}" alt="${bannerRecommendation[4].nameRu}" />
+							${bannerRecommendation}
 						</div>
 					</div>
 				</div>`;
+};
+const markupModal = () => {
+	const {
+		nameRu,
+		description,
+		year,
+		ratingImdb,
+		genres,
+		countries: {
+			0: { country },
+		},
+		posterUrl,
+	} = dataPreview;
+
+	const genresArr = genres
+		.map(
+			item => `
+        <button class="modal__genres-btn">${item.genre.replace(/^./, char =>
+					char.toUpperCase()
+				)}</button>
+      `
+		)
+		.join('');
+
+	boxDetails.style.background = `url(${posterUrl}) center / cover no-repeat`;
+
+	return `<div class="modal__header">
+						<h2 class="modal__title-details">${nameRu}</h2>
+						<button id="modal-btn" class="modal__btn-details">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								x="0px"
+								y="0px"
+								width="20"
+								height="20"
+								viewBox="0 0 20 20"
+							>
+								<path
+									d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z"
+								></path>
+							</svg>
+						</button>
+					</div>
+					<div class="modal__wrapper">
+						<div class="modal__genres">
+							${genresArr}
+						</div>
+						<div class="modal__button">
+							<button class="modal__button-play btn-animate btn">
+								<span>Смотреть</span>
+							</button>
+							<button class="modal__button-trailer btn-animate btn">
+								<span>Трейлер</span>
+							</button>
+							<button class="modal__button-like">
+								<img src="./img/like.png" alt="like" />
+							</button>
+							<button class="modal__button-share">
+								<img src="./img/share.png" alt="share" />
+								<p>Поделиться</p>
+							</button>
+						</div>
+					</div>
+					<div class="modal__info">
+						<div class="modal__info-rating">Рейтинг: ${ratingImdb}</div>
+						<div class="modal__info-year">${year}</div>
+						<div class="modal__info-country">${country}</div>
+					</div>
+					<p>
+						${description}
+					</p>`;
 };
 
 fetchMovies(
