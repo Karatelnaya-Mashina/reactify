@@ -4,70 +4,72 @@ const popular = document.getElementById('popular');
 const boxPopular = document.querySelector('.modal__box-search');
 
 let dataPopular = {
-	posterUrl: './img/popular/BANNER.jpeg',
+  posterUrl: './img/popular/BANNER.jpeg',
 };
 let popularList = [];
 
+console.log('popular');
+
 // Запросы превью
 export async function fetchPopular(url) {
-	try {
-		const response = await fetch(url, {
-			method: 'GET',
-			headers: {
-				'X-API-KEY': KEY_API,
-				'Content-Type': 'application/json',
-			},
-		});
-		const data = await response.json();
-		console.log(data);
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'X-API-KEY': KEY_API,
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+    console.log('fetchPopular:::::', data);
 
-		let index = 0;
+    let index = 0;
 
-		const {
-			nameRu,
-			description,
-			year,
-			ratingKinopoisk,
-			genres,
-			countries: {
-				0: { country },
-			},
-			posterUrl,
-		} = data.items[index];
+    const {
+      nameRu,
+      description,
+      year,
+      ratingKinopoisk,
+      genres,
+      countries: {
+        0: { country },
+      },
+      posterUrl,
+    } = data.items[index];
 
-		dataPopular = {
-			...dataPopular,
-			nameRu,
-			description,
-			year,
-			ratingKinopoisk,
-			genres,
-			countries: {
-				0: { country },
-			},
-			posterUrl,
-		};
+    dataPopular = {
+      ...dataPopular,
+      nameRu,
+      description,
+      year,
+      ratingKinopoisk,
+      genres,
+      countries: {
+        0: { country },
+      },
+      posterUrl,
+    };
 
-		popularList = data.items.slice(1, 20);
+    popularList = data.items.slice(1, 20);
 
-		renderPopular();
-	} catch (error) {
-		console.error('Error >>>', error.message);
-	}
+    renderPopular();
+  } catch (error) {
+    console.error('Error >>>', error.message);
+  }
 }
 
 const renderPopularBanner = () => {
-	const { nameRu, description, year, ratingKinopoisk } = dataPopular;
+  const { nameRu, description, year, rating } = dataPopular;
 
-	const bannerPopular = popularList
-		.map(
-			item => `
+  const bannerPopular = popularList
+    .map(
+      item => `
         <img class="slide" src="${item.posterUrl}" alt="${item.nameRu}" />
       `
-		)
-		.join('');
+    )
+    .join('');
 
-	return `<div class="popular__container container">
+  return `<div class="popular__container container">
           						<scroll-slider>
 							<div class="popular__shell">
 								<h2 class="popular__title">Популярное</h2>
@@ -97,7 +99,7 @@ const renderPopularBanner = () => {
 						</scroll-slider>
 						<div class="popular__banner">
 							<h3 class="popular__banner-title">${nameRu}</h3>
-							<p>Рейтинг: <span>${ratingKinopoisk}</span> ${year}</p>
+							<p>Рейтинг: <span>${rating}</span> ${year}</p>
 							<div class="popular__description">
 								${description}
 							</div>
@@ -118,31 +120,31 @@ const renderPopularBanner = () => {
 };
 
 const markupPopularModal = () => {
-	const {
-		nameRu,
-		description,
-		year,
-		rating,
-		genres,
-		countries: {
-			0: { country },
-		},
-		posterUrl,
-	} = dataPopular;
+  const {
+    nameRu,
+    description,
+    year,
+    rating,
+    genres,
+    countries: {
+      0: { country },
+    },
+    posterUrl,
+  } = dataPopular;
 
-	const genresList = genres
-		.map(
-			item => `
+  const genresList = genres
+    .map(
+      item => `
         <button class="modal__genres-btn">${item.genre.replace(/^./, char =>
-					char.toUpperCase()
-				)}</button>
+          char.toUpperCase()
+        )}</button>
       `
-		)
-		.join('');
+    )
+    .join('');
 
-	boxPopular.style.background = `url(${posterUrl}) center / cover no-repeat`;
+  boxPopular.style.background = `url(${posterUrl}) center / cover no-repeat`;
 
-	return `<div class="modal__header">
+  return `<div class="modal__header">
 						<h2 class="modal__title-details">${nameRu}</h2>
 						<button id="modal-btn" class="modal__btn-search">
 							<svg
@@ -190,16 +192,16 @@ const markupPopularModal = () => {
 };
 
 const renderPopular = () => {
-	popular.innerHTML = renderPopularBanner();
+  popular.innerHTML = renderPopularBanner();
 
-	const bannerFilm = document.querySelector('.popular__banner');
-	if (bannerFilm) {
-		bannerFilm.style.background = `url(${dataPopular.posterUrl}) center / cover no-repeat`;
-	}
+  const bannerFilm = document.querySelector('.popular__banner');
+  if (bannerFilm) {
+    bannerFilm.style.background = `url(${dataPopular.posterUrl}) center / cover no-repeat`;
+  }
 
-	boxPopular.innerHTML = markupPopularModal();
+  boxPopular.innerHTML = markupPopularModal();
 };
 
 fetchPopular(
-	'https://kinopoiskapiunofficial.tech/api/v2.2/films/collections?type=TOP_POPULAR_ALL&page=1'
+  'https://kinopoiskapiunofficial.tech/api/v2.2/films/collections?type=TOP_POPULAR_ALL&page=1'
 );

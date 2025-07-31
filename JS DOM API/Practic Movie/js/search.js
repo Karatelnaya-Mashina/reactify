@@ -9,9 +9,7 @@ const modalSearch = document.querySelector('.modal__box-search');
 let original;
 let index = 0;
 
-let dataSearch = {
-	posterUrl: './img/preview/BANNER.jpeg',
-};
+let dataSearch = {};
 let searchList = [];
 let searchUrl;
 
@@ -223,7 +221,6 @@ const renderSearch = () => {
 	const nextBtn = document.querySelector('scroll-slider-btn-next');
 	nextBtn.addEventListener('click', e => {
 		e.preventDefault();
-		changeIndex();
 	});
 
 	modalSearch.innerHTML = markupSearchModal();
@@ -234,8 +231,4 @@ function restoreOriginal() {
 		body.innerHTML = original;
 		search.value = '';
 	}
-}
-function changeIndex() {
-	index++;
-	// fetchSearch();
 }
