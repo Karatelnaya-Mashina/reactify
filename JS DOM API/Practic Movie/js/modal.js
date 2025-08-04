@@ -9,7 +9,6 @@ export default class ModalWindow extends HTMLElement {
 			const detailsModal = this.modalMovie;
 			const searchModal = this.modalSearch;
 
-			// open
 			if (e.target.matches('#preview-btn > span')) {
 				detailsModal.classList.add('open');
 			} else if (e.target.matches('#profile')) {
@@ -17,7 +16,7 @@ export default class ModalWindow extends HTMLElement {
 			} else if (e.target.matches('#modal-btn > span')) {
 				searchModal.classList.add('open');
 			}
-			// close
+
 			if (e.target.matches('.modal__btn-profile > svg')) {
 				profileModal.classList.remove('open');
 			}
@@ -30,7 +29,6 @@ export default class ModalWindow extends HTMLElement {
 				searchModal.classList.remove('open');
 			}
 
-			// Закрыть окно при нажатии ESC
 			window.addEventListener('keydown', e => {
 				if (e.key === 'Escape') {
 					profileModal.classList.remove('open');
@@ -38,7 +36,7 @@ export default class ModalWindow extends HTMLElement {
 					searchModal.classList.remove('open');
 				}
 			});
-			// Закрыть окно при клике вне его
+
 			document
 				.querySelector('#modal-profile .modal__box-profile')
 				.addEventListener('click', e => [(e._isClickWithInModal = true)]);

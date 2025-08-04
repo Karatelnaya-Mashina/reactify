@@ -19,7 +19,6 @@ export async function fetchPopular(url) {
 			},
 		});
 		const data = await response.json();
-		console.log(data);
 
 		let index = 0;
 
