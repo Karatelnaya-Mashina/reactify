@@ -1,5 +1,9 @@
-import { getSearchedFilms } from './api/api.js';
-import { capitalizeGenres } from './utils.js';
+import { filmApi } from '../api/api.js';
+import {
+	capitalizeGenres,
+	getBannerSearchImg,
+	getBackgroundToElement,
+} from '../utils/utils.js';
 import {
 	renderBannerHeader,
 	renderFilmInfo,
@@ -7,15 +11,13 @@ import {
 	renderModalHeader,
 	renderModalButtons,
 	renderModalInfo,
-} from './templates.js';
+} from '../templates/templates.js';
 
 export function searchModule(state, actions) {
 	const searchButton = document.getElementById('search-btn');
 	const formSearch = document.querySelector('.header__wrap form');
 	const modalSearch = document.querySelector('.modal__box-search');
 	const searchInput = document.getElementById('search');
-
-	const URL_API = `https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=`;
 
 	searchButton.addEventListener('click', () => showSearch());
 
@@ -35,8 +37,8 @@ export function searchModule(state, actions) {
 		}
 
 		if (searchInput.value) {
-			const data = await getSearchedFilms(
-				URL_API + searchInput.value,
+			const data = await filmApi.getSearchedFilms(
+				searchInput.value,
 				state.index
 			);
 
@@ -55,12 +57,12 @@ export function searchModule(state, actions) {
 		main.innerHTML = renderSearchBanner();
 
 		const bannerFilm = document.querySelector('.popular__banner');
-		addBackgroundToElement(bannerFilm, state.searchFilm.posterUrl);
-
-		addBackgroundToElement(modalSearch, state.searchFilm.posterUrl);
-
 		const nextBtn = document.querySelector('scroll-slider-btn-next');
 		const prevBtn = document.querySelector('scroll-slider-btn-prev');
+
+		assignBackground(bannerFilm, state.searchFilm.posterUrl);
+
+		assignBackground(modalSearch, state.searchFilm.posterUrl);
 
 		if (nextBtn) {
 			nextBtn.addEventListener('click', e => {
@@ -82,26 +84,36 @@ export function searchModule(state, actions) {
 	const renderSearchBanner = () => {
 		const { nameRu, description, year, rating } = state.searchFilm;
 		const bannerSearch = renderBannerSearchImg(state.searchListData);
-		const hasNext = state.searchListData.length - 1 !== state.index;
-		const hasPrev = state.index !== 0;
+		const next = state.searchListData.length - 1 !== state.index;
+		const prev = state.index !== 0;
 
 		return `<div class="popular__container container">
-    <scroll-slider>
-      ${renderBannerHeader(hasPrev, hasNext)}
-      <scroll-slider-track class="popular__collection">${bannerSearch}</scroll-slider-track>
-    </scroll-slider>
-    <div class="popular__banner">
-      ${renderFilmInfo({ nameRu, rating, year, description })}
-      ${renderBannerButtons()}
-    </div>
-  </div>`;
+					<scroll-slider>
+					${renderBannerHeader(prev, next)}
+					<scroll-slider-track class="popular__collection">
+						${bannerSearch}
+					</scroll-slider-track>
+					</scroll-slider>
+					<div class="popular__banner">
+						${renderFilmInfo(nameRu, rating, year, description)}
+						${renderBannerButtons()}
+					</div>
+				</div>`;
 	};
 
 	const markupSearchModal = () => {
-		const { nameRu, description, rating, year, genres, countries } =
-			state.searchFilm;
+		const {
+			nameRu,
+			description,
+			rating,
+			year,
+			genres,
+			countries: {
+				0: { country },
+			},
+		} = state.searchFilm;
+
 		const genresList = capitalizeGenres(genres);
-		const country = countries[0].country;
 
 		return `
     ${renderModalHeader(nameRu)}
@@ -142,21 +154,11 @@ export function searchModule(state, actions) {
 		}
 	}
 
-	function addBackgroundToElement(element, imgUrl) {
-		if (element) {
-			element.style.background = `url(${imgUrl}) center / cover no-repeat`;
-		}
-
-		return !!element;
+	function assignBackground(element, img) {
+		return getBackgroundToElement(element, img);
 	}
 
 	function renderBannerSearchImg(data) {
-		return data
-			.map(
-				item => `
-    <img class="slide" src="${item.posterUrl}" alt="${item.nameRu}" />
-    `
-			)
-			.join('');
+		return getBannerSearchImg(data);
 	}
 }

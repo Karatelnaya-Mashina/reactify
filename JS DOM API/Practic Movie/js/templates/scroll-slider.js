@@ -8,9 +8,9 @@ export default class ScrollSlider extends HTMLElement {
 		this.nextBtn?.addEventListener('click', () => {
 			this.track.scrollToNext();
 		});
-		this.track?.addEventListener('scroll', () => {
-			this.handleScroll();
-		});
+		// this.track?.addEventListener('scroll', () => {
+		// 	this.handleScroll();
+		// });
 	}
 	get track() {
 		return this.querySelector('scroll-slider-track');
@@ -20,14 +20,6 @@ export default class ScrollSlider extends HTMLElement {
 	}
 	get nextBtn() {
 		return this.querySelector('scroll-slider-btn-next');
-	}
-	handleScroll() {
-		if (this.prevBtn) {
-			this.prevBtn.hidden = this.track?.isTrackStart();
-		}
-		if (this.nextBtn) {
-			this.nextBtn.hidden = this.track?.isTrackFinish();
-		}
 	}
 }
 

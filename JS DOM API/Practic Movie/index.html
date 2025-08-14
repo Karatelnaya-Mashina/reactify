@@ -348,17 +348,16 @@
 									</scroll-slider-btn>
 								</div>
 								<div class="category__box">
-									<select name="" id="">
-										<option value="disabled selected hidden">Фильмы</option>
-										<option value="selected">Сериалы</option>
-										<option value="selected">Шоу</option>
-										<option value="selected">ТВ</option>
+									<select name="type" id="type">
+										<option value="FILM" selected>Фильмы</option>
+										<option value="TV_SERIES">Сериалы</option>
+										<option value="TV_SHOW">Шоу</option>
 									</select>
 									<select name="" id="">
-										<option value="disabled selected hidden">Жанр</option>
-										<option value="selected">Комедия</option>
-										<option value="selected">Ужасы</option>
-										<option value="selected">Боевик</option>
+										<option value="" selected>Все жанры</option>
+										<option value="комедия">Комедия</option>
+										<option value="ужасы">Ужасы</option>
+										<option value="боевик">Боевик</option>
 										<option value="selected">Аниме</option>
 										<option value="selected">Военный</option>
 										<option value="selected">Детский</option>
@@ -453,7 +452,7 @@
 								/>
 							</scroll-slider-track>
 						</scroll-slider>
-						<div class="popular__banner">
+						<div class="category__banner">
 							<h3 class="popular__banner-title">Тёмный рыцарь</h3>
 							<p>Рейтинг: <span>9</span> 2008</p>
 							<div class="popular__description">
@@ -469,6 +468,12 @@
 							</button>
 							<button class="popular__banner-btn two-btn btn-animate btn">
 								<span>СМОТРЕТЬ СЕЙЧАС</span>
+							</button>
+							<button
+								id="modal-btn-category"
+								class="popular__banner-btn three-btn btn-animate btn"
+							>
+								<span>Подробнее</span>
 							</button>
 						</div>
 						<div class="category__wrapper"></div>
@@ -641,6 +646,62 @@
 					<div class="modal__header">
 						<h2 class="modal__title-search">Темный рыцарь</h2>
 						<button id="modal-btn" class="modal__btn-search">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								x="0px"
+								y="0px"
+								width="20"
+								height="20"
+								viewBox="0 0 20 20"
+							>
+								<path
+									d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z"
+								></path>
+							</svg>
+						</button>
+					</div>
+					<div class="modal__wrapper">
+						<div class="modal__genres">
+							<button class="modal__genres-btn">Боевик</button>
+							<button class="modal__genres-btn">Драма</button>
+							<button class="modal__genres-btn">Фантастика</button>
+						</div>
+						<div class="modal__button">
+							<button class="modal__button-play btn-animate btn">
+								<span>Смотреть</span>
+							</button>
+							<button class="modal__button-trailer btn-animate btn">
+								<span>Трейлер</span>
+							</button>
+							<button class="modal__button-like">
+								<img src="./img/like.png" alt="like" />
+							</button>
+							<button class="modal__button-share">
+								<img src="./img/share.png" alt="share" />
+								<p>Поделиться</p>
+							</button>
+						</div>
+					</div>
+					<div class="modal__info">
+						<div class="modal__info-rating">Рейтинг: 9</div>
+						<div class="modal__info-year">2008</div>
+						<div class="modal__info-country">Страна: USA</div>
+					</div>
+					<p>
+						Бэтмен поднимает ставки в войне с криминалом. С помощью лейтенанта
+						Джима Гордона и прокурора Харви Дента он намерен очистить улицы
+						Готэма от преступности. Сотрудничество оказывается эффективным, но
+						скоро они обнаружат себя посреди хаоса, развязанного восходящим
+						криминальным гением, известным напуганным горожанам под именем
+						Джокер.
+					</p>
+				</div>
+			</div>
+			<div id="modal-category" class="modal__search modal__category">
+				<div class="modal__box-search modal__box-category">
+					<div class="modal__header">
+						<h2 class="modal__title-search">Темный рыцарь</h2>
+						<button id="modal-btn" class="modal__btn-category">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								x="0px"
