@@ -16,48 +16,6 @@ import {
 export function categoriesModule(state, actions) {
 	const categorySection = document.getElementById('category');
 	const categoryModal = document.querySelector('.modal__box-category');
-	const filterForm = document.querySelector('.category__box');
-
-	let currentFilters = {
-		type: 'FILM',
-		genre: '',
-		ratingFrom: '',
-		yearFrom: '',
-		yearTo: '',
-		country: '',
-	};
-
-	const setupFilterHandlers = () => {
-        const selects = filterForm.querySelectorAll('select');
-        selects.forEach(select => {
-            select.addEventListener('change', (e) => {
-                currentFilters[e.target.name] = e.target.value;
-            });
-        });
-
-        const submitButton = filterForm.querySelector('.category__btn');
-        submitButton.addEventListener('click', loadFilteredMovies);
-    };
-
-	filterForm.addEventListener('change', e => {
-		if (e.target.tagName === 'SELECT') {
-			const name = e.target.id || e.target.name;
-			currentFilters[name] = e.target.value;
-			loadFilteredMovies();
-		}
-	});
-
-	const submitButton = filterForm.querySelector('.category__btn');
-	submitButton.addEventListener('click', loadFilteredMovies);
-
-	async function loadFilteredMovies() {
-		const data = await filmApi.getFetchFilteredMovies(
-			currentFilters,
-			state.index
-		);
-		actions.setCategoriesListData(data.filmsListFiltered);
-		renderCategories();
-	}
 
 	async function formCallback() {
 		const data = await filmApi.getFetchCategories(state.index);

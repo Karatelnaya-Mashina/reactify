@@ -45,24 +45,10 @@ export const filmApi = {
 		};
 	},
 
-	getFetchCategories: async (index, filters = {}) => {
-		let url =
-			'https://kinopoiskapiunofficial.tech/api/v2.2/films/collections?type=TOP_POPULAR_ALL&page=1';
-
-		if (Object.keys(filters).length > 0) {
-			url = 'https://kinopoiskapiunofficial.tech/api/v2.2/films';
-			const params = new URLSearchParams();
-
-			if (filters.genre) params.append('genres', filters.genre);
-			if (filters.ratingFrom) params.append('ratingFrom', filters.ratingFrom);
-			if (filters.yearFrom) params.append('yearFrom', filters.yearFrom);
-			if (filters.yearTo) params.append('yearTo', filters.yearTo);
-			if (filters.country) params.append('countries', filters.country);
-			if (filters.type) params.append('type', filters.type);
-
-			url += `?${params.toString()}`;
-		}
-		const data = await makeRequest(URL);
+	getFetchCategories: async index => {
+		const data = await makeRequest(
+			'https://kinopoiskapiunofficial.tech/api/v2.2/films/collections?type=TOP_POPULAR_ALL&page=2'
+		);
 
 		return {
 			dataCategories: data.items[index],
