@@ -18,6 +18,7 @@ export function searchModule(state, actions) {
 	const formSearch = document.querySelector('.header__wrap form');
 	const modalSearch = document.querySelector('.modal__box-search');
 	const searchInput = document.getElementById('search');
+	const value = searchInput.value;
 
 	searchButton.addEventListener('click', () => showSearch());
 

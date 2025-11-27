@@ -8,7 +8,7 @@ const API_URLS = {
 		'https://kinopoiskapiunofficial.tech/api/v2.2/films/collections?type=TOP_POPULAR_MOVIES&page=1',
 	popular:
 		'https://kinopoiskapiunofficial.tech/api/v2.2/films/collections?type=TOP_POPULAR_ALL&page=1',
-	new: 'https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=2025&month=JANUARY',
+	new: 'https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres',
 	categories: 'https://kinopoiskapiunofficial.tech/api/v2.2/films/filters',
 	search:
 		'https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=',
@@ -33,10 +33,12 @@ export const filmApi = {
 	},
 
 	getFetchNewMovies: async page => {
-		const currentYear = new Date().getFullYear();
-		const currentMonth = getCurrentMonth();
+		// const currentYear = new Date().getFullYear();
+		// const currentMonth = getCurrentMonth();
 		// const url = `${API_URLS.new}?year=${currentYear}&month=${currentMonth}&page=${page}`;
-		const url = `${API_URLS.new}`;
+
+		const url =
+			'https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=2025&month=JANUARY';
 
 		const data = await makeRequest(url);
 

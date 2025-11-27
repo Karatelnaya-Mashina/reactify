@@ -43,7 +43,7 @@ export function previewModule(state, actions) {
 			},
 		} = state.dataPreview;
 
-		const bannerRecommendation = renderBannerPreviewImg(state.filmsListPreview);
+		const bannerRecommendation = getBannerSearchImg(state.filmsListPreview);
 
 		getBackgroundToElement(preview, state.dataPreview.posterUrl);
 
@@ -87,8 +87,4 @@ export function previewModule(state, actions) {
 			</p>
 		`;
 	};
-
-	function renderBannerPreviewImg(data) {
-		return getBannerSearchImg(data);
-	}
 }
